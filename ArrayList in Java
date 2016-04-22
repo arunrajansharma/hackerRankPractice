@@ -1,0 +1,78 @@
+You are given nn lines. In each line there are zero or more integers. You need to answer a few queries where you need to tell the number located in ythyth position of xthxth line. 
+
+Take your input from System.in.
+
+Input Format
+The first line has an integer nn. In each of the next nn lines there will be an integer dd denoting number of integers on that line and then there will be dd space-separated integers. In the next line there will be an integer qq denoting number of queries. Each query will consist of two integers xx and yy.
+
+Constraints
+
+1<=n<=200001<=n<=20000
+0<=d<=500000<=d<=50000
+1<=q<=10001<=q<=1000
+1<=x<=n1<=x<=n
+
+Each number will fit in signed integer.
+Total number of integers in nn lines will not cross 100000.
+
+Output Format
+In each line, output the number located in ythyth position of xthxth line. If there is no such position, just print "ERROR!"
+
+
+
+
+
+
+
+************************************** Try Yourself First **********************************************************************************
+
+
+
+Solution :
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+     int n = sc.nextInt();
+     sc.nextLine();
+     List <ArrayList<Integer>> L = new ArrayList<ArrayList<Integer>>(n);
+        
+     for(int i=0;i<n;i++){
+         ArrayList<Integer> S = new ArrayList<Integer>();
+         
+         String[] line = sc.nextLine().split(" ");
+         for(int j=0;j < line.length;j++){
+             S.add(Integer.parseInt(line[j]));
+         }
+         
+         L.add(S);
+         
+         }//Outer for loop ends here
+      
+         int q = sc.nextInt();
+        sc.nextLine();
+        for(int k =0;k<q;k++){
+            int x,y;
+            x = sc.nextInt();
+            y = sc.nextInt();
+            sc.nextLine();
+            if(L.get(x-1).size() <= y){
+                System.out.println("ERROR!") ;
+            }
+            else{
+                System.out.println(L.get(x-1).get(y));
+            }
+        }
+        
+        //System.out.println(L.get(0).get(3));
+        
+     }// main ends here   
+            
+ }//Class ends here
+
