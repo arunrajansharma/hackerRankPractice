@@ -1,0 +1,92 @@
+A string containing only parentheses is balanced if the following is true: 1. if it is an empty string 2. if A and B are correct, AB is correct, 3. if A is correct, (A) and {A} and [A] are also correct.
+
+Examples of some correctly balanced strings are: "{}()", "[{()}]", "({()})" 
+
+Examples of some unbalanced strings are: "{}(", "({)}", "[[", "}{" etc.
+
+Given a string, determine if it is balanced or not.
+
+Input Format
+
+There will be multiple lines in the input file, each having a single non-empty string. You should read input till end-of-file.
+
+The part of the code that handles input operation is already provided in the editor.
+
+Output Format
+
+For each case, print 'true' if the string is balanced, 'false' otherwise
+
+
+
+
+
+
+
+
+
+
+***************************************************************Try it Your self, get it done ************************
+
+
+
+
+
+
+import java.util.*;
+class Solution{
+   
+   public static void main(String []argh)
+   {
+      Scanner sc = new Scanner(System.in);
+      
+      while (sc.hasNext()) {
+          
+         String input=sc.next();
+          int flag =0;
+          
+          Stack<Character> st = new Stack<Character>();
+          
+          if(input.isEmpty()){
+              System.out.println("true");
+          }
+       
+              
+          for(int i =0;i<input.length();i++){
+             
+              if(input.charAt(i)=='(' || input.charAt(i) == '{' || input.charAt(i) =='['){
+                  st.push(input.charAt(i));
+              }
+             
+              
+              //(input.charAt(i) ==')' && st.peek().compareTo(Character.valueOf('(')) != 0)
+             
+              
+              
+              if(input.charAt(i)==')' || input.charAt(i) == '}' || input.charAt(i) ==']'){
+                  
+                  if(st.empty() || input.charAt(i) == ')' && st.peek() != '(' || input.charAt(i) == '}' && st.peek() != '{' || input.charAt(i) == ']' && st.peek() != '[')
+                  {flag =1;
+                 
+                      break;
+                  }
+                  else{
+                      st.pop();
+                  }
+                  
+              }
+              
+          }// for loop ends here
+          
+          if(flag==1 || !st.empty()){
+              System.out.println("false");
+          }
+          else{
+              System.out.println("true");
+          }
+          
+      st.clear();
+      
+      }
+      
+   }
+}
