@@ -1,0 +1,113 @@
+
+In computer science, a set is an abstract data type that can store certain values, without any particular order, and no repeated values(Wikipedia). {1,2,3} is an example of a set, but {1,2,2} is not a set. Today you will learn how to use sets in java by solving this problem.
+
+You are given n pairs of strings. Two pairs (a,b)(a,b) and (c,d)(c,d) are identical if a=ca=c and b=db=d. That also implies (a,b)(a,b) is not same as (b,a)(b,a). After taking each pair as input, you need to print number of unique pairs you currently have.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+****************************You know great things take time, may be go slow but don't stop *********************
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+class Names{
+    String fname;
+    String lname;
+    
+    public Names(String a, String b){
+        super();
+        this.fname = a;
+        this.lname = b;
+    }
+    
+    @Override
+  public int hashCode() {
+    
+    return (this.fname.hashCode() + this.lname.hashCode()) ;
+    
+}
+    
+    @Override
+   public boolean equals(Object object) {
+		boolean result = false;
+		if (object == null || object.getClass() != getClass()) {
+			result = false;
+		} else {
+			Names otherName = (Names) object;
+			if (this.fname.compareTo(otherName.fname) == 0
+					&& this.lname.compareTo(otherName.lname) ==0) {
+				result = true;
+			}
+		}
+		return result;
+	}
+
+ 
+    
+}
+
+public class Solution {
+
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        sc.nextLine();
+        
+        HashSet<Names> hs = new HashSet<Names>();
+        
+        while(T>0){
+            String a = sc.next();
+            String b = sc.next();
+            
+            
+            
+            Names name = new Names(a,b);
+            
+            if(!hs.contains(name)){
+                hs.add(name);
+                
+            }
+            
+           System.out.println(hs.size());
+            
+            
+            T--;
+        }
+    
+    
+    }
+}
