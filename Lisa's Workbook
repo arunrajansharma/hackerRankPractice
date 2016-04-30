@@ -1,0 +1,88 @@
+Lisa just got a new math workbook. A workbook contains exercise problems, grouped into chapters.
+
+There are nn chapters in Lisa's workbook, numbered from 11 to nn.
+The ii-th chapter has titi problems, numbered from 11 to titi.
+Each page can hold up to kk problems. There are no empty pages or unnecessary spaces, so only the last page of a chapter may contain fewer than kk problems.
+Each new chapter starts on a new page, so a page will never contain problems from more than one chapter.
+The page number indexing starts at 11.
+Lisa believes a problem to be special if its index (within a chapter) is the same as the page number where it's located. Given the details for Lisa's workbook, can you count its number of special problems?
+
+
+
+
+********************************* This one is a good problem for a learner like me **************
+
+
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       
+    Scanner sc = new Scanner(System.in);
+       
+        int n = sc.nextInt();
+        double k = sc.nextDouble();   // should be integer, but for Ceiling function to work
+        
+        int[] chapters = new int[n+1];
+        chapters[0] = 0;
+        
+        int[] pages = new int[n+1];
+        pages[0] = 0;
+        
+        
+        for(int i=1;i<=n;i++){
+            chapters[i] = sc.nextInt();
+            pages[i] = (int)Math.ceil(chapters[i]/k);
+        }
+        
+        int count = 0;
+        
+        for(int i=1;i<=n;i++){
+            
+            int currentChapterBase = 0;
+            for(int j=0;j<i;j++){
+                currentChapterBase += pages[j];
+                
+            }
+            
+            
+            int currentChapterOffset = pages[i];
+            
+            
+     
+            int currentProblems = chapters[i];
+            
+        
+            
+            
+            
+            
+            
+            for(int d =1;d<=currentProblems;d++){
+                int problemPage = currentChapterBase + (int)Math.ceil(d/k);
+                if(d == problemPage ){
+                    count++;
+                }
+                
+                
+                
+                }
+                
+                
+            }
+            
+           
+        
+        
+        System.out.println(count);
+        
+    
+    }
+}
