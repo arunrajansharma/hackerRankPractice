@@ -1,0 +1,33 @@
+This problem will test your knowledge on try-catch block.
+
+You will be given two integers xx and yy as input, you have to compute x/y. If x and y are not 32 bit signed integers or if y is zero, exception will occur and you have to report it. Read sample Input/Output to know what to report in case of exceptions.
+
+
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+//import java.lang.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+    
+        Scanner sc = new Scanner(System.in);
+ 
+        try{
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+            System.out.println(x/y);
+        }
+        catch (InputMismatchException  ex){
+            System.out.println("java.util.InputMismatchException");
+        }
+        catch (ArithmeticException ex){
+            System.out.println("java.lang.ArithmeticException: / by zero");
+        }
+    }
+}
