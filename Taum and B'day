@@ -1,0 +1,71 @@
+
+
+
+Taum is planning to celebrate the birthday of his friend, Diksha. There are two types of gifts that Diksha wants from Taum: one is black and the other is white. To make her happy, Taum has to buy BB number of black gifts and WW number of white gifts.
+
+The cost of each black gift is XX units.
+The cost of every white gift is YY units.
+The cost of converting each black gift into white gift or vice versa is ZZ units.
+Help Taum by deducing the minimum amount he needs to spend on Diksha's gifts.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+************** Nice problems, checks two concepts, find out which one :D *********
+
+
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.lang.Number.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for(int a0 = 0; a0 < t; a0++){
+            int b = in.nextInt();
+            int w = in.nextInt();
+            int x = in.nextInt();
+            int y = in.nextInt();
+            int z = in.nextInt();
+            
+            BigInteger B = new BigInteger(String.valueOf(b));
+            BigInteger W = new BigInteger(String.valueOf(w));
+            BigInteger X = new BigInteger(String.valueOf(x));
+            BigInteger Y = new BigInteger(String.valueOf(y));
+            BigInteger Z = new BigInteger(String.valueOf(z));
+            
+            BigInteger normal = (B.multiply(X)).add(W.multiply(Y));
+            BigInteger way1 =   (B.multiply(X)).add(W.multiply(X)).add(W.multiply(Z));
+            BigInteger way2 =   (B.multiply(Z)).add(W.multiply(Y)).add(B.multiply(Y));
+            
+            BigInteger result =  (way1.min(way2)).min(normal) ;
+            
+            System.out.println(result);
+       /*     
+       
+         long normal = b*x + w*y;
+       long way1 = b*x + w*x + w*z;
+      long way2 = b*z + w*y + b*y;
+       */     
+        //long result = Math.min(normal, Math.min(way1,way2));
+           // System.out.println(result);
+        }
+    }
+}
